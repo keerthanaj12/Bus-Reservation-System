@@ -51,6 +51,7 @@ int loginUser(struct User users[], int numUsers, char username[], char password[
 
 //  booking tickets
 void bookTicket(struct Bus buses[], int numBuses){
+    printf("\n====Ticket Booking====\n");
     printf("\nEnter Bus Number: ");
     int busNumber;
     scanf("%d", &busNumber);
@@ -77,13 +78,14 @@ void bookTicket(struct Bus buses[], int numBuses){
         }
         else{
             buses[busIndex].availableSeats -= seatsToBook;
-            printf("Booking successful! %d seats booked on Bus Number %d.\n", seatsToBook, busNumber);
+            printf("\n-----Booking successful! %d seats booked on Bus Number %d.-----\n", seatsToBook, busNumber);
         }
     }
 }
 
 //  cancelling tickets
 void cancelTicket(struct Bus buses[], int numBuses){
+    printf("\n====Ticket Cancellation====");
     printf("\nEnter Bus Number: ");
     int busNumber;
     scanf("%d", &busNumber);
@@ -106,11 +108,11 @@ void cancelTicket(struct Bus buses[], int numBuses){
         scanf("%d", &seatsToCancel);
 
         if (seatsToCancel > (buses[busIndex].totalSeats - buses[busIndex].availableSeats)){
-            printf("Error: You can't cancel more seats than were booked.\n");
+            printf("\nError: You can't cancel more seats than were booked.\n");
         }
         else{
             buses[busIndex].availableSeats += seatsToCancel;
-            printf("Cancellation successful! %d seats canceled on Bus Number %d.\n", seatsToCancel,
+            printf("\n----Cancellation successful! %d seats canceled on Bus Number %d.----\n", seatsToCancel,
                    busNumber);
         }
     }
@@ -118,6 +120,7 @@ void cancelTicket(struct Bus buses[], int numBuses){
 
 //  check bus status
 void checkBusStatus(struct Bus buses[], int numBuses){
+    printf("\n====Track the Bus Status here====");
     printf("\nEnter Bus Number: ");
     int busNumber;
     scanf("%d", &busNumber);
@@ -140,7 +143,7 @@ void checkBusStatus(struct Bus buses[], int numBuses){
         printf("Fare: %.2f\n", buses[busIndex].fare);
     }
     else{
-        printf("Bus with Bus Number %d not found.\n", busNumber);
+        printf("\nBus with Bus Number %d not found.....\n", busNumber);
     }
 }
 
@@ -159,8 +162,7 @@ int main(){
     };
     int numBuses = 3;
 
-    int loggedInUserId = -1; // Index of the logged-in user
-
+    int loggedInUserId = -1; 
     while (1){
         if (loggedInUserId == -1){
             displayMainMenu();
@@ -170,7 +172,7 @@ int main(){
             if (choice == 1){
                 char username[50];
                 char password[50];
-
+                printf("\n\n======LOGIN======\n");
                 printf("Enter Username: ");
                 scanf("%s", username);
                 printf("Enter Password: ");
@@ -181,15 +183,15 @@ int main(){
                     printf("Login failed. Please check your username and password.\n");
                 }
                 else{
-                    printf("Login successful. Welcome, %s!\n", username);
+                    printf("\n\n------Login successful. Welcome %s!------\n", username);
                 }
             }
             else if (choice == 2){
-                printf("Exiting the program.\n");
+                printf("\nExiting the program.\n");
                 break;
             }
             else{
-                printf("Invalid choice. Please try again.\n");
+                printf("\nInvalid choice. Please try again.\n");
             }
         }
         else{
