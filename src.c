@@ -210,7 +210,7 @@ int main(){
                 checkBusStatus(buses, numBuses);
                 break;
             case 4:
-                printf("Logging out.\n");
+                printf("\n---------You have been Logged out----------\n");
                 loggedInUserId = -1;
                 break;
             default:
